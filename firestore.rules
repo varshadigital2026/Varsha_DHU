@@ -1,0 +1,41 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: inspections
+    // Document ID: auto-generated
+    // Fields:
+    //   - timestamp: timestamp (required)
+    //   - unitsInspected: number (required)
+    //   - totalDefects: number (required)
+    //   - dhu: number (required)
+    //   - images: list of strings (optional)
+    //   - defects: list of objects (required)
+    //   - summary: string (optional)
+    //
+    // ===============================================================
+
+    // Helper Functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isValidInspection(data) {
+      return data.userId is string &&
+             data.unitsInspected is number && data.unitsInspected > 0 &&
+             data.totalDefects is number && data.totalDefects >= 0 &&
+             data.dhu is number && data.dhu >= 0 &&
+             data.defects is list;
+    }
+
+    match /inspections/{inspectionId} {
+      allow read: if true;
+      allow create: if (isAuthenticated() || request.resource.data.userId == 'guest') && isValidInspection(request.resource.data);
+      allow update: if (isAuthenticated() || resource.data.userId == 'guest') && isValidInspection(request.resource.data);
+      allow delete: if isAuthenticated();
+    }
+  }
+}

@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* HSL Overrides for html2canvas compatibility - Tailwind 4 uses oklch/oklab by default */
+  --color-slate-50: hsl(210, 40%, 98%);
+  --color-slate-100: hsl(210, 40%, 96%);
+  --color-slate-200: hsl(210, 40%, 90%);
+  --color-slate-300: hsl(210, 40%, 80%);
+  --color-slate-400: hsl(210, 40%, 70%);
+  --color-slate-500: hsl(215, 16%, 47%);
+  --color-slate-600: hsl(215, 16%, 35%);
+  --color-slate-700: hsl(215, 16%, 25%);
+  --color-slate-800: hsl(215, 16%, 15%);
+  --color-slate-900: hsl(222, 47%, 11%);
+  --color-slate-950: hsl(222, 47%, 5%);
+
+  --color-zinc-50: hsl(0, 0%, 98%);
+  --color-zinc-100: hsl(0, 0%, 96%);
+  --color-zinc-200: hsl(0, 0%, 90%);
+  --color-zinc-300: hsl(0, 0%, 80%);
+  --color-zinc-400: hsl(0, 0%, 70%);
+  --color-zinc-500: hsl(240, 5%, 45%);
+  --color-zinc-600: hsl(240, 5%, 35%);
+  --color-zinc-700: hsl(240, 5%, 25%);
+  --color-zinc-800: hsl(240, 5%, 15%);
+  --color-zinc-900: hsl(240, 5%, 5%);
+  --color-zinc-950: hsl(240, 5%, 2%);
+
+  --color-gray-50: hsl(0, 0%, 98%);
+  --color-gray-100: hsl(0, 0%, 96%);
+  --color-gray-200: hsl(0, 0%, 90%);
+  --color-gray-300: hsl(0, 0%, 80%);
+  --color-gray-400: hsl(0, 0%, 70%);
+  --color-gray-500: hsl(215, 16%, 47%);
+  --color-gray-600: hsl(215, 16%, 35%);
+  --color-gray-700: hsl(215, 16%, 25%);
+  --color-gray-800: hsl(215, 16%, 15%);
+  --color-gray-900: hsl(215, 16%, 10%);
+  --color-gray-950: hsl(215, 16%, 5%);
+
+  --color-neutral-50: hsl(0, 0%, 98%);
+  --color-neutral-100: hsl(0, 0%, 96%);
+  --color-neutral-200: hsl(0, 0%, 90%);
+  --color-neutral-300: hsl(0, 0%, 80%);
+  --color-neutral-400: hsl(0, 0%, 70%);
+  --color-neutral-500: hsl(0, 0%, 45%);
+  --color-neutral-600: hsl(0, 0%, 35%);
+  --color-neutral-700: hsl(0, 0%, 25%);
+  --color-neutral-800: hsl(0, 0%, 15%);
+  --color-neutral-900: hsl(0, 0%, 5%);
+  --color-neutral-950: hsl(0, 0%, 2%);
+
+  --color-stone-50: hsl(30, 5%, 98%);
+  --color-stone-100: hsl(30, 5%, 96%);
+  --color-stone-200: hsl(30, 5%, 90%);
+  --color-stone-300: hsl(30, 5%, 80%);
+  --color-stone-400: hsl(30, 5%, 70%);
+  --color-stone-500: hsl(30, 5%, 45%);
+  --color-stone-600: hsl(30, 5%, 35%);
+  --color-stone-700: hsl(30, 5%, 25%);
+  --color-stone-800: hsl(30, 5%, 15%);
+  --color-stone-900: hsl(30, 5%, 5%);
+  --color-stone-950: hsl(30, 5%, 2%);
+
+  --color-red-50: hsl(0, 100%, 98%);
+  --color-red-100: hsl(0, 100%, 95%);
+  --color-red-200: hsl(0, 100%, 90%);
+  --color-red-300: hsl(0, 100%, 80%);
+  --color-red-400: hsl(0, 100%, 70%);
+  --color-red-500: hsl(0, 84%, 60%);
+  --color-red-600: hsl(0, 84%, 50%);
+  --color-red-700: hsl(0, 84%, 40%);
+  --color-red-800: hsl(0, 84%, 30%);
+  --color-red-900: hsl(0, 84%, 20%);
+
+  --color-orange-50: hsl(30, 100%, 98%);
+  --color-orange-100: hsl(30, 100%, 95%);
+  --color-orange-200: hsl(30, 100%, 90%);
+  --color-orange-300: hsl(30, 100%, 80%);
+  --color-orange-400: hsl(30, 100%, 70%);
+  --color-orange-500: hsl(24, 95%, 53%);
+  --color-orange-600: hsl(24, 95%, 43%);
+  --color-orange-700: hsl(24, 95%, 33%);
+  --color-orange-800: hsl(24, 95%, 23%);
+  --color-orange-900: hsl(24, 95%, 13%);
+
+  --color-yellow-50: hsl(50, 100%, 98%);
+  --color-yellow-100: hsl(50, 100%, 95%);
+  --color-yellow-200: hsl(50, 100%, 90%);
+  --color-yellow-300: hsl(50, 100%, 80%);
+  --color-yellow-400: hsl(50, 100%, 70%);
+  --color-yellow-500: hsl(47, 95%, 55%);
+  --color-yellow-600: hsl(47, 95%, 45%);
+  --color-yellow-700: hsl(47, 95%, 35%);
+  --color-yellow-800: hsl(47, 95%, 25%);
+  --color-yellow-900: hsl(47, 95%, 15%);
+
+  --color-emerald-50: hsl(150, 100%, 98%);
+  --color-emerald-100: hsl(150, 100%, 95%);
+  --color-emerald-200: hsl(150, 100%, 90%);
+  --color-emerald-300: hsl(150, 100%, 80%);
+  --color-emerald-400: hsl(150, 100%, 70%);
+  --color-emerald-500: hsl(150, 100%, 35%);
+  --color-emerald-600: hsl(150, 100%, 25%);
+  --color-emerald-700: hsl(150, 100%, 20%);
+  --color-emerald-800: hsl(150, 100%, 15%);
+  --color-emerald-900: hsl(150, 100%, 10%);
+
+  --color-blue-50: hsl(210, 100%, 98%);
+  --color-blue-100: hsl(210, 100%, 95%);
+  --color-blue-200: hsl(210, 100%, 90%);
+  --color-blue-300: hsl(210, 100%, 80%);
+  --color-blue-400: hsl(210, 100%, 70%);
+  --color-blue-500: hsl(217, 91%, 60%);
+  --color-blue-600: hsl(217, 91%, 50%);
+  --color-blue-700: hsl(217, 91%, 40%);
+  --color-blue-800: hsl(217, 91%, 30%);
+  --color-blue-900: hsl(217, 91%, 20%);
+}
+
+@layer base {
+  :root {
+    --background: hsl(0, 0%, 100%);
+    --foreground: hsl(240, 10%, 3.9%);
+    --card: hsl(0, 0%, 100%);
+    --card-foreground: hsl(240, 10%, 3.9%);
+    --popover: hsl(0, 0%, 100%);
+    --popover-foreground: hsl(240, 10%, 3.9%);
+    --primary: hsl(240, 5.9%, 10%);
+    --primary-foreground: hsl(0, 0%, 98%);
+    --secondary: hsl(240, 4.8%, 95.9%);
+    --secondary-foreground: hsl(240, 5.9%, 10%);
+    --muted: hsl(240, 4.8%, 95.9%);
+    --muted-foreground: hsl(240, 3.8%, 46.1%);
+    --accent: hsl(240, 4.8%, 95.9%);
+    --accent-foreground: hsl(240, 5.9%, 10%);
+    --destructive: hsl(0, 84.2%, 60.2%);
+    --destructive-foreground: hsl(0, 0%, 98%);
+    --border: hsl(240, 5.9%, 90%);
+    --input: hsl(240, 5.9%, 90%);
+    --ring: hsl(240, 5.9%, 10%);
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: hsl(240, 10%, 3.9%);
+    --foreground: hsl(0, 0%, 98%);
+    --card: hsl(240, 10%, 3.9%);
+    --card-foreground: hsl(0, 0%, 98%);
+    --popover: hsl(240, 10%, 3.9%);
+    --popover-foreground: hsl(0, 0%, 98%);
+    --primary: hsl(0, 0%, 98%);
+    --primary-foreground: hsl(240, 5.9%, 10%);
+    --secondary: hsl(240, 3.7%, 15.9%);
+    --secondary-foreground: hsl(0, 0%, 98%);
+    --muted: hsl(240, 3.7%, 15.9%);
+    --muted-foreground: hsl(240, 5%, 64.9%);
+    --accent: hsl(240, 3.7%, 15.9%);
+    --accent-foreground: hsl(0, 0%, 98%);
+    --destructive: hsl(0, 62.8%, 30.6%);
+    --destructive-foreground: hsl(0, 0%, 98%);
+    --border: hsl(240, 3.7%, 15.9%);
+    --input: hsl(240, 3.7%, 15.9%);
+    --ring: hsl(240, 4.9%, 83.9%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  main {
+    padding-left: 0 !important;
+  }
+  
+  .max-w-7xl {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .shadow-sm, .shadow-md, .shadow-lg, .shadow-xl {
+    box-shadow: none !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+  
+  .rounded-xl, .rounded-2xl, .rounded-3xl {
+    border-radius: 0.5rem !important;
+  }
+  
+  body {
+    background-color: white !important;
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+
+  /* Ensure charts and images are not cut */
+  .grid, .card, img, .recharts-responsive-container {
+    page-break-inside: avoid !important;
+  }
+
+  /* Specific typography for print */
+  h2, h3 {
+    page-break-after: avoid !important;
+    color: black !important;
+  }
+
+  /* Force background colors on badges and cards for visibility */
+  .bg-card, .bg-muted, .bg-primary {
+    print-color-adjust: exact !important;
+  }
+}
